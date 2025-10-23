@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Permissions - EduDoc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366F1;
+            --secondary: #F472B6;
+            --tertiary: #FBBF24;
+            --backup: #14B8A6;
+            --bg-start: #0F172A;
+            --bg-end: #1E293B;
+        }
+        body {
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+        h1, h2 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transition: all 0.3s ease;
+        }
+        .btn-primary-gradient:hover {
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.6);
+            filter: brightness(1.1);
+        }
+        .card-gradient {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(46, 61, 89, 0.7));
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="antialiased flex items-center justify-center p-4">
+    <div class="max-w-md w-full animate-fade-in">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <i class="fas fa-shield-alt text-5xl text-tertiary mb-4"></i>
+            <h1 class="text-4xl font-bold text-gradient mb-2">App Permissions</h1>
+            <p class="text-gray-400">Help us provide you with the best experience</p>
+        </div>
+
+        <!-- Permissions List -->
+        <div class="card-gradient rounded-xl p-6 shadow-2xl space-y-4 mb-6">
+            <!-- Permission 1: Storage -->
+            <div class="flex items-start justify-between p-3 rounded-lg hover:bg-gray-700/30 transition">
+                <div class="flex items-start flex-1">
+                    <i class="fas fa-folder-open text-2xl text-primary mt-1 mr-4"></i>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Storage Access</h3>
+                        <p class="text-xs text-gray-400">Save and manage downloaded documents on your device</p>
+                    </div>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer ml-3">
+                    <input type="checkbox" class="sr-only peer" checked>
+                    <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                </label>
+            </div>
+
+            <!-- Permission 2: Notifications -->
+            <div class="flex items-start justify-between p-3 rounded-lg hover:bg-gray-700/30 transition">
+                <div class="flex items-start flex-1">
+                    <i class="fas fa-bell text-2xl text-secondary mt-1 mr-4"></i>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Notifications</h3>
+                        <p class="text-xs text-gray-400">Receive updates about new documents and offers</p>
+                    </div>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer ml-3">
+                    <input type="checkbox" class="sr-only peer" checked>
+                    <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                </label>
+            </div>
+
+            <!-- Permission 3: Camera -->
+            <div class="flex items-start justify-between p-3 rounded-lg hover:bg-gray-700/30 transition">
+                <div class="flex items-start flex-1">
+                    <i class="fas fa-camera text-2xl text-backup mt-1 mr-4"></i>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Camera Access</h3>
+                        <p class="text-xs text-gray-400">Scan QR codes and upload profile pictures</p>
+                    </div>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer ml-3">
+                    <input type="checkbox" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                </label>
+            </div>
+
+            <!-- Permission 4: Biometrics -->
+            <div class="flex items-start justify-between p-3 rounded-lg hover:bg-gray-700/30 transition">
+                <div class="flex items-start flex-1">
+                    <i class="fas fa-fingerprint text-2xl text-tertiary mt-1 mr-4"></i>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Biometric Authentication</h3>
+                        <p class="text-xs text-gray-400">Use fingerprint or face ID for secure login</p>
+                    </div>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer ml-3">
+                    <input type="checkbox" class="sr-only peer" checked>
+                    <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Privacy Note -->
+        <div class="mb-6 p-4 rounded-lg bg-gray-800/50 border border-gray-700">
+            <p class="text-xs text-gray-400 text-center">
+                <i class="fas fa-lock mr-1"></i> We respect your privacy. You can change these permissions anytime in settings.
+            </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="space-y-3">
+            <button onclick="window.location.href='lock-unlock.html'" class="w-full py-3 rounded-lg btn-primary-gradient text-white text-lg font-bold shadow-2xl hover:scale-105 transition">
+                Continue
+            </button>
+
+            <button onclick="window.location.href='main.html'" class="text-gray-500 hover:text-gray-300 text-sm underline w-full transition">
+                Skip for Now (Prototype Mode)
+            </button>
+        </div>
+    </div>
+</body>
+</html>
+

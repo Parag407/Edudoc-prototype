@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock App - EduDoc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366F1;
+            --secondary: #F472B6;
+            --tertiary: #FBBF24;
+            --backup: #14B8A6;
+            --bg-start: #0F172A;
+            --bg-end: #1E293B;
+        }
+        body {
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+        h1, h2 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transition: all 0.3s ease;
+        }
+        .btn-primary-gradient:hover {
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.6);
+            filter: brightness(1.1);
+        }
+        .card-gradient {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(46, 61, 89, 0.7));
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .biometric-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .pin-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #6B7280;
+            transition: all 0.3s ease;
+        }
+        .pin-dot.filled {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body class="antialiased flex items-center justify-center p-4">
+    <div class="max-w-md w-full animate-fade-in">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <i class="fas fa-graduation-cap text-5xl text-tertiary mb-4"></i>
+            <h1 class="text-3xl font-bold text-white mb-2">EduDoc</h1>
+            <p class="text-gray-400 text-sm">Unlock to continue</p>
+        </div>
+
+        <!-- Biometric Unlock (Default View) -->
+        <div id="biometric-view" class="card-gradient rounded-xl p-8 shadow-2xl text-center">
+            <div class="mb-6">
+                <i class="fas fa-fingerprint text-8xl text-tertiary biometric-pulse mb-4"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white mb-2">Touch Sensor to Unlock</h2>
+            <p class="text-gray-400 text-sm mb-6">Use your fingerprint or face ID</p>
+            
+            <button onclick="unlockWithBiometric()" class="w-full py-3 rounded-lg btn-primary-gradient text-white text-lg font-bold shadow-2xl hover:scale-105 transition mb-4">
+                <i class="fas fa-fingerprint mr-2"></i> Simulate Biometric Unlock
+            </button>
+
+            <button onclick="showPasswordView()" class="text-gray-400 hover:text-white text-sm underline transition">
+                Use Password Instead
+            </button>
+        </div>
+
+        <!-- Password Unlock (Hidden by Default) -->
+        <div id="password-view" class="card-gradient rounded-xl p-8 shadow-2xl hidden">
+            <div class="text-center mb-6">
+                <i class="fas fa-lock text-5xl text-primary mb-4"></i>
+                <h2 class="text-xl font-bold text-white mb-2">Enter PIN or Password</h2>
+                <p class="text-gray-400 text-sm">Enter your security code</p>
+            </div>
+
+            <!-- PIN Dots Display -->
+            <div id="pin-display" class="flex justify-center gap-3 mb-6">
+                <div class="pin-dot" id="dot-1"></div>
+                <div class="pin-dot" id="dot-2"></div>
+                <div class="pin-dot" id="dot-3"></div>
+                <div class="pin-dot" id="dot-4"></div>
+            </div>
+
+            <!-- Number Pad -->
+            <div class="grid grid-cols-3 gap-3 mb-6">
+                <button onclick="enterPin('1')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">1</button>
+                <button onclick="enterPin('2')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">2</button>
+                <button onclick="enterPin('3')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">3</button>
+                <button onclick="enterPin('4')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">4</button>
+                <button onclick="enterPin('5')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">5</button>
+                <button onclick="enterPin('6')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">6</button>
+                <button onclick="enterPin('7')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">7</button>
+                <button onclick="enterPin('8')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">8</button>
+                <button onclick="enterPin('9')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">9</button>
+                <button onclick="showBiometricView()" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-400 text-sm transition">
+                    <i class="fas fa-fingerprint"></i>
+                </button>
+                <button onclick="enterPin('0')" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-xl font-semibold transition">0</button>
+                <button onclick="clearPin()" class="p-4 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-400 text-sm transition">
+                    <i class="fas fa-backspace"></i>
+                </button>
+            </div>
+
+            <p id="error-message" class="text-red-400 text-sm text-center mb-4 hidden">Incorrect PIN. Try again.</p>
+        </div>
+
+        <!-- Skip Button -->
+        <div class="text-center mt-6">
+            <button onclick="window.location.href='main.html'" class="text-gray-500 hover:text-gray-300 text-sm underline transition">
+                Skip for Now (Prototype Mode)
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let pinCode = '';
+        const correctPin = '1234'; // Demo PIN for prototype
+
+        function unlockWithBiometric() {
+            // Simulate biometric authentication
+            setTimeout(() => {
+                window.location.href = 'main.html';
+            }, 800);
+        }
+
+        function showPasswordView() {
+            document.getElementById('biometric-view').classList.add('hidden');
+            document.getElementById('password-view').classList.remove('hidden');
+        }
+
+        function showBiometricView() {
+            document.getElementById('password-view').classList.add('hidden');
+            document.getElementById('biometric-view').classList.remove('hidden');
+            clearPin();
+        }
+
+        function enterPin(digit) {
+            if (pinCode.length < 4) {
+                pinCode += digit;
+                updatePinDisplay();
+                
+                if (pinCode.length === 4) {
+                    verifyPin();
+                }
+            }
+        }
+
+        function clearPin() {
+            if (pinCode.length > 0) {
+                pinCode = pinCode.slice(0, -1);
+                updatePinDisplay();
+                document.getElementById('error-message').classList.add('hidden');
+            }
+        }
+
+        function updatePinDisplay() {
+            for (let i = 1; i <= 4; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (i <= pinCode.length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                }
+            }
+        }
+
+        function verifyPin() {
+            if (pinCode === correctPin) {
+                // Correct PIN - unlock app
+                setTimeout(() => {
+                    window.location.href = 'main.html';
+                }, 500);
+            } else {
+                // Incorrect PIN
+                document.getElementById('error-message').classList.remove('hidden');
+                setTimeout(() => {
+                    pinCode = '';
+                    updatePinDisplay();
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
+
