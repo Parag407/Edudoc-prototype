@@ -11,6 +11,7 @@
     <!-- Fonts: Inter (UI text) and Montserrat (Headings) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
     <style>
+
         /* ==================================== */
         /* 1. Global Theme Variables & Custom CSS */
         /* ==================================== */
@@ -1758,12 +1759,6 @@
                         <!-- Type Badge -->
                         <span class="absolute top-1 left-1 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-900 text-white shadow-md">${product.type}</span>
                     </div>
-
-                    <!-- Bookmark Button (Adjusted position for horizontal card) -->
-                    <button class="absolute top-4 right-4 p-2 rounded-full bg-gray-900/70 backdrop-blur-sm text-lg z-10 hover:bg-gray-800 transition" 
-                            onclick="event.stopPropagation(); toggleBookmark(${product.id});">
-                        <i id="bookmark-icon-${product.id}" class="${isBookmarked ? 'fas text-secondary' : 'far text-gray-400'} fa-bookmark"></i>
-                    </button>
                     
                     <!-- Right: Content and Actions -->
                     <div class="flex-1 flex flex-col min-w-0">
@@ -1778,14 +1773,22 @@
                         </div>
 
                         <!-- Price & Actions -->
-                        <div class="mt-auto flex justify-between items-center pt-2 border-t border-gray-700/50 pr-12"> <!-- pr-12 added to avoid overlap with bookmark -->
+                        <div class="mt-auto flex justify-between items-center pt-2 border-t border-gray-700/50">
                             <div class="flex items-center">
                                 <i class="${icon} text-sm mr-2 ${product.isFree ? 'text-backup' : 'text-tertiary'}"></i>
                                 <span class="text-lg font-extrabold ${product.isFree ? 'text-backup' : 'text-tertiary'}">${priceText}</span>
                             </div>
-                            <button class="w-8 h-8 rounded-full btn-primary-gradient text-white shadow-lg hover:shadow-xl hover:scale-105 transition" onclick="event.stopPropagation(); addToCart(${product.id});">
-                                <i class="fas fa-plus"></i>
-                            </button>
+                            <div class="flex items-center space-x-2">
+                                <!-- Add to Cart Button -->
+                                <button class="w-8 h-8 rounded-full btn-primary-gradient text-white shadow-lg hover:shadow-xl hover:scale-105 transition" onclick="event.stopPropagation(); addToCart(${product.id});">
+                                    <i class="fas fa-shopping-cart text-sm"></i>
+                                </button>
+                                <!-- Bookmark Button -->
+                                <button class="w-8 h-8 rounded-full bg-gray-900/70 backdrop-blur-sm text-lg hover:bg-gray-800 transition" 
+                                        onclick="event.stopPropagation(); toggleBookmark(${product.id});">
+                                    <i id="bookmark-icon-${product.id}" class="${isBookmarked ? 'fas text-secondary' : 'far text-gray-400'} fa-bookmark text-sm"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
