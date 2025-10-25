@@ -394,7 +394,7 @@
             <!-- Logo -->
             <div class="mb-8">
                 <i class="fas fa-graduation-cap text-6xl text-tertiary mb-4"></i>
-                <h1 class="text-5xl font-bold text-gradient mb-2">EduDoc</h1>
+                <h1 class="text-4xl font-bold text-gradient mb-2">EduDoc</h1>
                 <p class="text-gray-400 text-lg">Your Premium Notes Marketplace</p>
             </div>
             
@@ -725,9 +725,12 @@
                 </button>
 
                 <!-- Profile Avatar -->
-                <button onclick="navigate('profile')" class="w-10 h-10 rounded-full bg-primary/70 ring-2 ring-tertiary/50 overflow-hidden shadow-xl hover:ring-tertiary transition">
-                    <i class="fas fa-user-circle text-2xl text-white/80 mt-1"></i>
-                </button>
+                <!-- Profile Avatar -->
+<button onclick="navigate('profile')" id="header-profile-avatar" class="w-10 h-10 rounded-full bg-primary/70 ring-2 ring-tertiary/50 overflow-hidden shadow-xl hover:ring-tertiary transition flex items-center justify-center">
+    <i class="fas fa-user-circle text-2xl text-white/80" id="header-default-avatar"></i>
+    <img id="header-profile-image" class="w-full h-full object-cover hidden" alt="Profile">
+</button>
+
             </div>
         </div>
     </header>
@@ -742,7 +745,7 @@
         <!-- HOME PAGE (Visible by default) -->
         <!-- ============================== -->
         <section id="home-page" class="page-content page-visible">
-            <h2 class="text-4xl font-heading font-extrabold mb-8 text-white">
+            <h2 class="text-2xl font-heading font-extrabold mb-8 text-white">
                 Discover
                 <span class="text-gradient">Premium Docs</span>
             </h2>
@@ -763,7 +766,7 @@
                         <h3 class="text-2xl sm:text-3xl font-heading font-bold">50% OFF Back-to-School Bundle!</h3>
                         <div class="flex justify-between items-end">
                             <p class="text-sm opacity-90">Math, Science & History. Limited time offer.</p>
-                            <button onclick="navigate('offers')" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition">View Bundle</button>
+                            <button onclick="navigate('offers')" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition">View </button>
                         </div>
                     </div>
                     <!-- Carousel Slide 2 -->
@@ -832,7 +835,7 @@
         <!-- ================================== -->
         <section id="search-page" class="page-content hidden">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-heading font-extrabold mb-6 text-white">
+                <h2 class="text-2xl font-heading font-extrabold mb-6 text-white">
                     Find Your Next 
                     <span class="text-gradient">Document</span>
                 </h2>
@@ -879,7 +882,7 @@
         <!-- ================================== -->
         <section id="profile-page" class="page-content hidden">
             <div class="max-w-2xl mx-auto">
-                <h2 class="text-4xl font-heading font-extrabold mb-8 text-gradient">My Account</h2>
+                <h2 class="text-2xl font-heading font-extrabold mb-8 text-gradient">My Account</h2>
                 
                 <!-- Profile Card -->
                 <div class="card-gradient rounded-xl p-6 mb-8 flex items-center shadow-2xl">
@@ -935,7 +938,7 @@
         <!-- ================================== -->
         <section id="settings-page" class="page-content hidden">
             <div class="max-w-2xl mx-auto">
-                <h2 class="text-4xl font-heading font-extrabold mb-8 text-gradient">App Settings</h2>
+                <h2 class="text-2xl font-heading font-extrabold mb-8 text-gradient">App Settings</h2>
 
                 <div class="space-y-4">
                     <!-- Section: Security & Preferences -->
@@ -990,7 +993,7 @@
         <!-- ================================== -->
         <section id="cart-page" class="page-content hidden">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-heading font-extrabold mb-8 text-white">
+                <h2 class="text-2xl font-heading font-extrabold mb-8 text-white">
                     <span class="text-gradient">Shopping</span> Cart
                 </h2>
 
@@ -1036,7 +1039,7 @@
         <!-- ================================== -->
         <section id="wallet-page" class="page-content hidden">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-heading font-extrabold mb-8 text-white">
+                <h2 class="text-2xl font-heading font-extrabold mb-8 text-white">
                     Your <span class="text-gradient">Token Wallet</span>
                 </h2>
 
@@ -1070,7 +1073,7 @@
         <!-- ================================== -->
         <section id="bookmarks-page" class="page-content hidden">
              <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-heading font-extrabold mb-8 text-white">
+                <h2 class="text-2xl font-heading font-extrabold mb-8 text-white">
                     My <span class="text-gradient">Saved Documents</span>
                 </h2>
 
@@ -1128,7 +1131,7 @@
         <section id="admin-dashboard-page" class="page-content hidden">
             
             <div class="flex justify-between items-center lg:block">
-                <h2 class="text-4xl font-heading font-extrabold text-white mb-6">
+                <h2 class="text-2xl font-heading font-extrabold text-white mb-6">
                     Admin <span class="text-gradient">Dashboard</span>
                 </h2>
                 <!-- NEW: Mobile Menu Toggle Button -->
@@ -1241,10 +1244,15 @@
                 <span>Settings</span>
             </button>
              <!-- My Account (MOVED TO EXTREME RIGHT) -->
-            <button onclick="navigate('profile')" class="nav-item flex flex-col items-center text-xs font-semibold text-gray-400 hover:text-primary transition">
-                <i class="fas fa-user-circle text-xl mb-1"></i>
-                <span>Account</span>
-            </button>
+            <!-- Profile -->
+<button onclick="navigate('profile')" id="bottom-nav-profile" class="nav-item flex flex-col items-center text-xs font-semibold text-gray-400 hover:text-primary transition">
+    <div class="w-6 h-6 rounded-full overflow-hidden bg-primary/50 flex items-center justify-center">
+        <i class="fas fa-user text-sm" id="bottom-nav-default-avatar"></i>
+        <img id="bottom-nav-profile-image" class="w-full h-full object-cover hidden" alt="Profile">
+    </div>
+    <span>Profile</span>
+</button>
+
         </div>
     </nav>
     
@@ -1254,6 +1262,21 @@
     <div id="edit-profile-modal" class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="card-gradient rounded-xl p-8 w-full max-w-md mx-4 transform scale-95 transition-transform duration-300 shadow-2xl">
             <h3 class="text-2xl font-heading font-bold text-gradient mb-6">Edit Profile Information</h3>
+<!-- Profile Photo Picker -->
+<div class="flex flex-col items-center mb-6">
+    <label class="block text-sm font-medium text-gray-300 mb-3">Profile Photo</label>
+    <div class="relative">
+        <div id="profile-photo-preview" class="w-32 h-32 rounded-full bg-gray-800 border-2 border-gray-700 flex items-center justify-center overflow-hidden cursor-pointer hover:border-primary transition" onclick="document.getElementById('profile-photo-input').click()">
+            <i class="fas fa-user text-gray-500 text-4xl" id="profile-default-icon"></i>
+            <img id="profile-preview-image" class="w-full h-full object-cover hidden" alt="Profile preview">
+        </div>
+        <button type="button" onclick="document.getElementById('profile-photo-input').click()" class="absolute bottom-0 right-0 bg-primary hover:bg-primary-hover text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition">
+            <i class="fas fa-camera"></i>
+        </button>
+    </div>
+    <input type="file" id="profile-photo-input" accept="image/*" class="hidden" onchange="previewProfilePhotoMain(event)">
+    <p class="text-xs text-gray-500 mt-2">Click to change profile picture</p>
+</div>
 
             <form id="edit-profile-form" onsubmit="handleProfileUpdate(event)">
                 <div class="mb-4">
@@ -1310,6 +1333,7 @@
                     <p class="font-bold text-primary">$9.00 USD (Mock)</p>
                 </div>
                  <!-- Package 4 -->
+                  
                 <div class="p-4 rounded-xl border-2 border-primary/50 text-center hover:bg-gray-700/50 cursor-pointer transition" onclick="buyTokens(2500)">
                     <p class="text-3xl font-heading font-extrabold text-tertiary">2500</p>
                     <p class="text-sm text-gray-400 mb-2">Tokens</p>
@@ -1752,13 +1776,17 @@
             const icon = product.isFree ? 'fas fa-gift' : 'fas fa-coins';
 
             return `
-                <div class="card-gradient rounded-xl p-4 flex flex-row space-x-4 items-start shadow-2xl relative" onclick="showProductDetails(${product.id})">
-                    <!-- Left: Media (Fixed size) -->
-                    <div class="w-24 h-24 flex-shrink-0 bg-gray-700/50 rounded-lg flex items-center justify-center relative overflow-hidden">
-                        <i class="fas fa-file-alt text-3xl text-white/50"></i>
-                        <!-- Type Badge -->
-                        <span class="absolute top-1 left-1 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-900 text-white shadow-md">${product.type}</span>
-                    </div>
+               <div class="w-24 h-24 flex-shrink-0 rounded-lg flex items-center justify-center relative overflow-hidden bg-gray-800">
+    ${product.coverImage ? `
+        <img src="${product.coverImage}" alt="${product.title} Cover" class="w-full h-full object-cover">
+    ` : `
+        <i class="fas fa-file-alt text-3xl text-white/50"></i>
+    `}
+    <!-- Type Badge -->
+    <span class="absolute top-1 left-1 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-900 text-white shadow-md">${product.type}</span>
+</div>
+
+
                     
                     <!-- Right: Content and Actions -->
                     <div class="flex-1 flex flex-col min-w-0">
@@ -2655,7 +2683,7 @@
                         <i class="fas fa-arrow-left mr-2"></i> Back to Home
                     </button>
                     
-                    <h2 class="text-4xl font-heading font-extrabold mb-8 text-white">
+                    <h2 class="text-2xl font-heading font-extrabold mb-8 text-white">
                         <span class="text-gradient">My</span> Digital Library
                     </h2>
 
@@ -2758,7 +2786,7 @@
                         <i class="fas fa-arrow-left mr-2"></i> Back to Home
                     </button>
                     
-                    <h2 class="text-4xl font-heading font-extrabold mb-8 text-white">
+                    <h2 class="text-2xl font-heading font-extrabold mb-8 text-white">
                         Special <span class="text-gradient">Offers & Bundles</span>
                     </h2>
 
@@ -2827,7 +2855,7 @@
                         <i class="fas fa-arrow-left mr-2"></i> Back to Offers
                     </button>
 
-                    <h2 class="text-4xl font-heading font-extrabold mb-8 text-white">
+                    <h2 class="text-2xl font-heading font-extrabold mb-8 text-white">
                         <span class="text-gradient">${offer.title}</span>
                     </h2>
 
@@ -2952,7 +2980,7 @@
             
             container.innerHTML = `
                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-4xl font-heading font-extrabold mb-8 text-white">
+                    <h2 class="text-2xl font-heading font-extrabold mb-8 text-white">
                         My <span class="text-gradient">Purchases & Downloads</span>
                     </h2>
                     
@@ -3251,7 +3279,7 @@
 
             formPage.innerHTML = `
                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-4xl font-heading font-extrabold mb-8 text-gradient">${titleText}</h2>
+                    <h2 class="text-2xl font-heading font-extrabold mb-8 text-gradient">${titleText}</h2>
 
                     <form onsubmit="handleProductSave(event, ${id})" class="space-y-6 card-gradient p-8 rounded-xl shadow-2xl">
                         
@@ -3275,6 +3303,21 @@
                                       class="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-primary focus:border-primary transition">${product.description || ''}</textarea>
                         </div>
                         
+                        <!-- Cover Image Upload -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Book Cover Image</label>
+                            <div class="relative">
+                                <input type="file" id="form-cover-image" accept="image/*" class="hidden" onchange="previewCoverImage(event)">
+                                <button type="button" onclick="document.getElementById('form-cover-image').click()" class="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-primary focus:border-primary transition text-left">
+                                    <i class="fas fa-image mr-2"></i>
+                                    <span id="cover-image-name">Choose an image</span>
+                                </button>
+                                <p class="text-xs text-gray-500 mt-1">
+                                    Recommended size: 300x400 pixels
+                                </p>
+                            </div>
+                        </div>
+
                         <!-- Upload Document Field (Draggable) -->
                         <div>
                             <label class="block text-sm font-medium text-gray-400 mb-2">Document File (PDF/MD)</label>
@@ -3343,6 +3386,25 @@
                     </form>
                 </div>
             `;
+        }
+
+        // Function to preview the selected cover image
+        function previewCoverImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Update the button text with the file name
+                    document.getElementById('cover-image-name').textContent = file.name;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Helper function to convert base64 to file
+        function base64ToFile(base64, filename) {
+            const arr = base64.split(',');
+            console.log(arr)
         }
         
         /**
@@ -3504,7 +3566,7 @@
 
             formPage.innerHTML = `
                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-4xl font-heading font-extrabold mb-8 text-gradient">${titleText}</h2>
+                    <h2 class="text-2xl font-heading font-extrabold mb-8 text-gradient">${titleText}</h2>
 
                     <form onsubmit="handleOfferSave(event, ${id})" class="space-y-6 card-gradient p-8 rounded-xl shadow-2xl">
                         
@@ -3893,6 +3955,50 @@
         }
 
         window.onload = initializeApp;
+function previewProfilePhotoMain(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imageUrl = e.target.result;
+            
+            // Update edit modal preview
+            const previewImage = document.getElementById('profile-preview-image');
+            const defaultIcon = document.getElementById('profile-default-icon');
+            if (previewImage && defaultIcon) {
+                previewImage.src = imageUrl;
+                previewImage.classList.remove('hidden');
+                defaultIcon.classList.add('hidden');
+            }
+            
+            // Update main profile page avatar
+            const profileAvatar = document.querySelector('#profile-page .w-24.h-24.rounded-full');
+            if (profileAvatar) {
+                profileAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full object-cover rounded-full" alt="Profile">`;
+            }
+            
+            // Update header profile avatar
+            const headerImage = document.getElementById('header-profile-image');
+            const headerDefault = document.getElementById('header-default-avatar');
+            if (headerImage && headerDefault) {
+                headerImage.src = imageUrl;
+                headerImage.classList.remove('hidden');
+                headerDefault.classList.add('hidden');
+            }
+            
+            // Update bottom nav profile avatar
+            const bottomNavImage = document.getElementById('bottom-nav-profile-image');
+            const bottomNavDefault = document.getElementById('bottom-nav-default-avatar');
+            if (bottomNavImage && bottomNavDefault) {
+                bottomNavImage.src = imageUrl;
+                bottomNavImage.classList.remove('hidden');
+                bottomNavDefault.classList.add('hidden');
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
 
     </script>
 </body>
