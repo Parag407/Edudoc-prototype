@@ -1893,7 +1893,7 @@
 
             // Only show up to 6 items on the shelf
             const ownedProducts = DUMMY_PRODUCTS.filter(p => bookmarkedProductIds.includes(p.id));
-            const productsToShow = ownedProducts.slice(0, 10); 
+            const productsToShow = ownedProducts.slice(0, 6); 
 
             if (productsToShow.length === 0) {
                  container.innerHTML = '<p class="text-sm text-gray-500">Your library is empty. Bookmark or purchase a document!</p>';
