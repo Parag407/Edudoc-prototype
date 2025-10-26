@@ -818,7 +818,7 @@
 
             <!-- Notes/Product Listing -->
             <h3 class="text-2xl font-heading font-bold mb-4 text-white">Popular Listings</h3>
-            <div id="product-listing-container" class="grid grid-cols-2 gap-6">
+            <div id="product-listing-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Product cards will be injected here by JS -->
             </div>
 
@@ -1440,7 +1440,7 @@
 
         // === PAGINATION STATE ===
         let currentPage = 1; 
-        const ITEMS_PER_PAGE = 10; 
+        const ITEMS_PER_PAGE = 6; 
         // ========================
 
         // Search State
@@ -1824,104 +1824,11 @@
          * @param {object} product - The product data object.
          * @returns {string} HTML string.
          */
-        // function createProductCard(product) {
-        //     const isBookmarked = bookmarkedProductIds.includes(product.id);
+        function createProductCard(product) {
+            const isBookmarked = bookmarkedProductIds.includes(product.id);
             
-        //     const priceText = product.isFree ? 'FREE' : `${product.price}`;
-        //     const icon = product.isFree ? 'fas fa-gift' : 'fas fa-coins';
-
-        //     return `
-        //         <div class="card-gradient rounded-xl p-4 flex flex-row space-x-4 items-start shadow-2xl relative" onclick="showProductDetails(${product.id})">
-        //             <!-- Left: Media (Fixed size) with Cover Image -->
-        //             <div class="w-24 h-32 flex-shrink-0 bg-gray-700/50 rounded-lg flex items-center justify-center relative overflow-hidden">
-        //                 ${product.coverImage ? 
-        //                   `<img src="${product.coverImage}" alt="${product.title}" class="w-full h-full object-cover">` : 
-        //                   `<i class="fas fa-file-alt text-3xl text-white/50"></i>`
-        //                 }
-        //                 <!-- Type Badge -->
-        //                 <span class="absolute top-1 left-1 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-900 text-white shadow-md">${product.type}</span>
-        //             </div>
-                    
-        //             <!-- Right: Content and Actions -->
-        //             <div class="flex-1 flex flex-col min-w-0">
-        //                 <!-- Content -->
-        //                 <h4 class="font-heading text-lg font-bold truncate text-white mb-1">${product.title}</h4>
-        //                 <p class="text-xs text-gray-400 mb-2 line-clamp-1">${product.description}</p>
-                        
-        //                 <!-- Tags -->
-        //                 <div class="flex flex-wrap gap-1 mb-2">
-        //                     <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-800 text-gray-300">${product.category}</span>
-        //                     ${product.tags.map(tag => `<span class="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-800/50 text-gray-400">${tag}</span>`).join('')}
-        //                 </div>
-
-        //                 <!-- Price & Actions -->
-        //                 <div class="mt-auto flex justify-between items-center pt-2 border-t border-gray-700/50">
-        //                     <div class="flex items-center">
-        //                         <i class="${icon} text-sm mr-2 ${product.isFree ? 'text-backup' : 'text-tertiary'}"></i>
-        //                         <span class="text-lg font-extrabold ${product.isFree ? 'text-backup' : 'text-tertiary'}">${priceText}</span>
-        //                     </div>
-        //                     <div class="flex items-center space-x-2">
-        //                         <!-- Add to Cart Button -->
-        //                         <button class="w-8 h-8 rounded-full btn-primary-gradient text-white shadow-lg hover:shadow-xl hover:scale-105 transition" onclick="event.stopPropagation(); addToCart(${product.id});">
-        //                             <i class="fas fa-shopping-cart text-sm"></i>
-        //                         </button>
-        //                         <!-- Bookmark Button -->
-        //                         <button class="w-8 h-8 rounded-full bg-gray-900/70 backdrop-blur-sm text-lg hover:bg-gray-800 transition" 
-        //                                 onclick="event.stopPropagation(); toggleBookmark(${product.id});">
-        //                             <i id="bookmark-icon-${product.id}" class="${isBookmarked ? 'fas text-secondary' : 'far text-gray-400'} fa-bookmark text-sm"></i>
-        //                         </button>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     `;
-        // }
-        
-
-
-        function createProductCard(product) {           //Vertical Layout less info
-    const isBookmarked = bookmarkedProductIds.includes(product.id);
-    
-    const priceText = product.isFree ? 'FREE' : `${product.price}`;
-    const icon = product.isFree ? 'fas fa-gift' : 'fas fa-coins';
-
-    return `
-        <div class="card-gradient rounded-xl p-3 flex flex-col shadow-lg hover:shadow-primary/50 transition-all cursor-pointer" onclick="showProductDetails(${product.id})">
-            
-            <!-- Cover Image (Compact) -->
-            <div class="w-full h-32 bg-gray-700/50 rounded-lg flex items-center justify-center relative overflow-hidden mb-2">
-                ${product.coverImage ? 
-                  `<img src="${product.coverImage}" alt="${product.title}" class="w-full h-full object-cover">` : 
-                  `<i class="fas fa-file-alt text-3xl text-white/50"></i>`
-                }
-                <!-- Type Badge -->
-                <span class="absolute top-1.5 left-1.5 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-900/90 text-white">${product.type}</span>
-            </div>
-            
-            <!-- Title Only -->
-            <h4 class="font-heading text-base font-bold text-white mb-2 line-clamp-2 min-h-[2.5rem]">${product.title}</h4>
-            
-            <!-- Price & Actions (Bottom) -->
-            <div class="flex justify-between items-center pt-2 border-t border-gray-700/30">
-                <div class="flex items-center">
-                    <i class="${icon} text-sm mr-1.5 ${product.isFree ? 'text-backup' : 'text-tertiary'}"></i>
-                    <span class="text-base font-extrabold ${product.isFree ? 'text-backup' : 'text-tertiary'}">${priceText}</span>
-                </div>
-                <div class="flex items-center gap-1.5">
-                    <!-- Cart Button -->
-                    <button class="w-8 h-8 rounded-full btn-primary-gradient text-white shadow hover:scale-110 transition flex items-center justify-center" onclick="event.stopPropagation(); addToCart(${product.id});">
-                        <i class="fas fa-shopping-cart text-xs"></i>
-                    </button>
-                    <!-- Bookmark Button -->
-                    <button class="w-8 h-8 rounded-full bg-gray-900/70 hover:bg-gray-800 transition flex items-center justify-center" 
-                            onclick="event.stopPropagation(); toggleBookmark(${product.id});">
-                        <i id="bookmark-icon-${product.id}" class="${isBookmarked ? 'fas text-secondary' : 'far text-gray-400'} fa-bookmark text-xs"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-}
+            const priceText = product.isFree ? 'FREE' : `${product.price}`;
+            const icon = product.isFree ? 'fas fa-gift' : 'fas fa-coins';
 
             return `
                 <div class="card-gradient rounded-xl p-4 flex flex-row space-x-4 items-start shadow-2xl relative" onclick="showProductDetails(${product.id})">
@@ -3536,26 +3443,6 @@
                             </div>
                         </div>
                         
-                        <!-- Cover Image Upload -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Cover Image</label>
-                            <div class="flex items-center space-x-4">
-                                <div class="w-32 h-40 bg-gray-800 border border-gray-700 rounded-lg overflow-hidden flex items-center justify-center">
-                                    <img id="cover-image-preview" src="${product.coverImage || 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%236B7280\'%3E%3Cpath d=\'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z\'/%3E%3C/svg%3E'}" 
-                                         alt="Cover preview" class="w-full h-full object-cover">
-                                </div>
-                                <div class="flex-1">
-                                    <button type="button" onclick="document.getElementById('form-cover-image').click()" 
-                                            class="btn-primary-gradient px-4 py-2 rounded-lg text-sm font-medium">
-                                        <i class="fas fa-image mr-2"></i>Choose Cover Image
-                                    </button>
-                                    <p class="text-xs text-gray-400 mt-2">Recommended size: 400x600px. JPG, PNG or SVG.</p>
-                                    <input type="file" id="form-cover-image" accept=".jpg,.jpeg,.png,.svg" class="hidden" 
-                                           onchange="handleCoverImageSelect(event)">
-                                </div>
-                            </div>
-                        </div>
-                        
                         <!-- Upload Document Field (Draggable) -->
                         <div>
                             <label class="block text-sm font-medium text-gray-400 mb-2">Document File (PDF/MD)</label>
@@ -4165,22 +4052,6 @@
             if (savedProfileImage) {
                 // Update all profile images across the app
                 updateAllProfileImages(savedProfileImage);
-            }
-            
-            // Load saved profile image if exists
-            const savedProfileImage = localStorage.getItem('userProfileImage');
-            if (savedProfileImage) {
-                // Update header profile image
-                const headerImage = document.getElementById('header-profile-image');
-                if (headerImage) {
-                    headerImage.src = savedProfileImage;
-                }
-                
-                // Update profile page image
-                const profilePageImage = document.getElementById('profile-page-image');
-                if (profilePageImage) {
-                    profilePageImage.src = savedProfileImage;
-                }
             }
             
             // OPTION: Show welcome page on first load (uncomment to enable)
